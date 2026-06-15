@@ -20,7 +20,7 @@ jobs:
         run: echo "$COMMITS"
       - name: commit messages
         env:
-          COMMIT_MESSAGE: ${{ github.event.commits.*.message }}
+          COMMIT_MESSAGE: ${{ join(github.event.commits.*.message, '') }}
         run: echo "$COMMIT_MESSAGE"
       - name: Check commit message
         env:
