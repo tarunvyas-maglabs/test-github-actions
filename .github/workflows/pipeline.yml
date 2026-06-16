@@ -26,4 +26,11 @@ jobs:
         env:
           CONTAINS_SKIP: ${{ contains(join(github.event.commits.*.message, ''), '#skip') }}
         run: echo "$CONTAINS_SKIP"
+      - name: check secret present
+        run: |
+          if [ -z "${{ secrets.DISCORD_WEBHOOK }}" ]; then
+            echo "WEBHOOK IS EMPTY"
+          else
+            echo "webhook is set (length hidden)"
+          fi
       
